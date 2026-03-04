@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf5ff;
+  --foreground: #1e1b4b;
+
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --primary-foreground: #ffffff;
+  --primary-muted: #ede9fe;
+  --gradient-from: #7c3aed;
+  --gradient-to: #a855f7;
+
+  --accent: #f97316;
+  --accent-foreground: #ffffff;
+  --accent-muted: #fff7ed;
+
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --success-muted: #dcfce7;
+
+  --danger: #ef4444;
+  --danger-foreground: #ffffff;
+  --danger-muted: #fee2e2;
+
+  --card: #ffffff;
+  --card-foreground: #1e1b4b;
+  --border: #e9d5ff;
+  --input: #e9d5ff;
+  --ring: #7c3aed;
+
+  --muted: #f5f3ff;
+  --muted-foreground: #6b7280;
+
+  --badge-muted: #ede9fe;
+  --progress-track: #e9d5ff;
+
+  --shadow-card: 0 2px 12px rgba(124, 58, 237, 0.08);
+  --shadow-card-hover: 0 8px 24px rgba(124, 58, 237, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f0a1a;
+    --foreground: #f0ecff;
+
+    --primary-muted: #2e1065;
+    --accent-muted: #431407;
+
+    --success-muted: #052e16;
+
+    --danger-muted: #450a0a;
+
+    --card: #1a1035;
+    --card-foreground: #f0ecff;
+    --border: #3b2d63;
+    --input: #3b2d63;
+
+    --muted: #1e1545;
+    --muted-foreground: #a5a0c8;
+
+    --badge-muted: #2e1065;
+    --progress-track: #3b2d63;
+
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 8px 24px rgba(124, 58, 237, 0.25);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: system-ui, -apple-system, sans-serif;
+}
