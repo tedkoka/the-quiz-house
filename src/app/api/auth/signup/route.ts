@@ -44,6 +44,22 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
+      // Detect network-level failures returned by the Supabase SDK
+      const msg = error.message.toLowerCase();
+      if (
+        msg.includes("fetch") ||
+        msg.includes("econnrefused") ||
+        msg.includes("enotfound") ||
+        msg.includes("network")
+      ) {
+        return NextResponse.json(
+          {
+            error:
+              "Unable to reach Supabase. This environment may not have outbound network access. Please try running the app locally (npm run dev) or check that your Supabase project is active at https://supabase.com/dashboard.",
+          },
+          { status: 503 }
+        );
+      }
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
