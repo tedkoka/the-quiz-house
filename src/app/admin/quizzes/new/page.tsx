@@ -8,6 +8,7 @@ interface QuizFormData {
   title: string;
   description: string;
   category: string;
+  difficulty: string;
   price_rands: string;
   time_per_question_seconds: string;
 }
@@ -20,6 +21,7 @@ export default function NewQuizPage() {
     title: "",
     description: "",
     category: "",
+    difficulty: "medium",
     price_rands: "0",
     time_per_question_seconds: "30",
   });
@@ -57,6 +59,7 @@ export default function NewQuizPage() {
         title: form.title.trim(),
         description: form.description.trim(),
         category: form.category.trim(),
+        difficulty: form.difficulty,
         price_cents: Math.round(priceRands * 100),
         time_per_question_seconds: timePerQuestion,
         published: false,
@@ -134,6 +137,24 @@ export default function NewQuizPage() {
               className="w-full border border-[var(--input)] rounded-2xl px-4 py-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
               placeholder="e.g. History, Science, General Knowledge"
             />
+          </div>
+
+          <div>
+            <label htmlFor="difficulty" className="block text-sm font-medium mb-1">
+              Difficulty
+            </label>
+            <select
+              id="difficulty"
+              name="difficulty"
+              required
+              value={form.difficulty}
+              onChange={(e) => setForm((prev) => ({ ...prev, difficulty: e.target.value }))}
+              className="w-full border border-[var(--input)] rounded-2xl px-4 py-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
           </div>
 
           <div className="grid grid-cols-2 gap-4">

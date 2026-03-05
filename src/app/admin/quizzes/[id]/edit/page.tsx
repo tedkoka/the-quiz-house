@@ -14,6 +14,7 @@ interface QuizFormData {
   title: string;
   description: string;
   category: string;
+  difficulty: string;
   price_rands: string;
   time_per_question_seconds: string;
   published: boolean;
@@ -36,6 +37,7 @@ function toQuizForm(quiz: Quiz): QuizFormData {
     title: quiz.title,
     description: quiz.description,
     category: quiz.category,
+    difficulty: quiz.difficulty ?? "medium",
     price_rands: (quiz.price_cents / 100).toFixed(2),
     time_per_question_seconds: String(quiz.time_per_question_seconds),
     published: quiz.published,
@@ -168,6 +170,7 @@ export default function EditQuizPage() {
         title: quizForm.title.trim(),
         description: quizForm.description.trim(),
         category: quizForm.category.trim(),
+        difficulty: quizForm.difficulty,
         price_cents: Math.round(priceRands * 100),
         time_per_question_seconds: timePerQ,
         published: quizForm.published,
@@ -413,6 +416,24 @@ export default function EditQuizPage() {
             onChange={handleQuizChange}
             className="w-full border border-[var(--input)] rounded-2xl px-4 py-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
           />
+        </div>
+
+        <div>
+          <label htmlFor="difficulty" className="block text-sm font-medium mb-1">
+            Difficulty
+          </label>
+          <select
+            id="difficulty"
+            name="difficulty"
+            required
+            value={quizForm.difficulty}
+            onChange={(e) => setQuizForm({ ...quizForm, difficulty: e.target.value })}
+            className="w-full border border-[var(--input)] rounded-2xl px-4 py-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-[var(--ring)]"
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

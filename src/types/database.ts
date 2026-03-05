@@ -13,6 +13,7 @@ export interface Quiz {
   title: string;
   description: string;
   category: string;
+  difficulty: string;
   price_cents: number;
   time_per_question_seconds: number;
   published: boolean;
